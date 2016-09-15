@@ -38,6 +38,11 @@
                         current: []
                     };
 
+                    if (!scope.selectedLabel) { scope.selectedLabel = "Selected"; }
+                    if (!scope.availableLabel) { scope.availableLabel = "Available"; }
+                    if (!scope.selectedPlaceholder) { scope.selectedPlaceholder = "Search"; }
+                    if (!scope.availablePlaceholder) { scope.availablePlaceholder = "Search"; }
+
                     /* Filters out items in original that are also in toFilter. Compares by reference. */
                     function filterOut(original, toFilter) {
                         var filtered = [];
@@ -194,21 +199,21 @@
             '<div class="select buttons">' +
                 '<button class="btn mover left" ng-click="remove()" title="Remove selected" ' +
                     'ng-disabled="!selected(selected.current).length">' +
-                    '<span class="icon-chevron-left"></span>' +
+                    '<i class="fa fa-chevron-left"></i>' +
                 '</button>' +
                 '<button class="btn mover left-all" ng-click="removeAll()" title="Remove selected" ' +
                     'ng-disabled="!model.length">' +
-                    '<span class="icon-chevron-left first"></span>' +
-                    '<span class="icon-chevron-left second"></span>' +
+                    '<i class="fa fa-chevron-left first"></i>' +
+                    '<i class="fa fa-chevron-left second"></i>' +
                 '</button>' +
                 '<button class="btn mover right" ng-click="add()" title="Add selected" ' +
                     'ng-disabled="!selected(selected.available).length">' +
-                    '<span class="icon-chevron-right"></span>' +
+                    '<i class="fa fa-chevron-right"></i>' +
                 '</button>' +
                 '<button class="btn mover right-all" ng-click="addAll()" title="Add selected" ' +
                     'ng-disabled="!available.length">' +
-                    '<span class="icon-chevron-right first"></span>' +
-                    '<span class="icon-chevron-right second"></span>' +
+                    '<i class="fa fa-chevron-right first"></i>' +
+                    '<i class="fa fa-chevron-right second"></i>' +
                 '</button>' +
                 '</div>' +
             '<div class="select">' +
@@ -216,7 +221,7 @@
                     '{{selectedLabel==""?"":"("+model.length+")"}}</label>' +
                     '<input ng-model="searchSelected" class="search" placeholder="{{selectedPlaceholder}}">' +
                     '<ul class ="selectedList">' +
-                        '<li ng-repeat="entity in model | filter:searchSelected">' +
+                        '<li ng-repeat="entity in model | filter:searchSelected" ng-class="{\'selected\':selected.current[$index].selected}">' +
                            '<label class="checkbox" title="{{ renderTitle(entity) }}">' +
                                '<input type="checkbox" ng-model="selected.current[$index].selected"> ' +
                                 '{{ renderItem(entity) }}' +

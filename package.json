@@ -1,0 +1,14 @@
+{
+  "name": "angular-multi-select",
+  "version": "1.0.0",
+  "author": "",
+  "main": "src/angular-multi-select.js",
+  "style": "src/angular-multi-select.css",
+  "description": "",
+  "repository": {
+    "url": "git://github.com/peter-norton/angular-multi-select.git"
+  },
+  "peerDependencies": {
+    "angular": "^1.2.x || ^2.0.x"
+  }
+}
